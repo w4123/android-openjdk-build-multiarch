@@ -53,6 +53,7 @@ echo "FFI"
 git clone https://github.com/libffi/libffi
 cd libffi
 git checkout v3.4.2
-xcodebuild -arch arm64
+xcodebuild -arch arm64 || error_code=$?
+echo "Continue"
 xcodebuild -arch arm64
 cd ..
