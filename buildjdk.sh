@@ -13,6 +13,7 @@ fi
 
 export FREETYPE_DIR=$PWD/freetype-$BUILD_FREETYPE_VERSION/build_android-$TARGET_SHORT
 export CUPS_DIR=$PWD/cups-2.2.4
+export FFI_DIR=$PWD/libffi/build/Release-iphoneos
 export CFLAGS+=" -DLE_STANDALONE" # -I$FREETYPE_DIR -I$CUPS_DI
 
 # if [ "$TARGET_JDK" == "aarch32" ] || [ "$TARGET_JDK" == "aarch64" ]
@@ -63,6 +64,8 @@ bash ./configure \
     --with-extra-cflags="$CFLAGS" \
     --with-extra-cxxflags="$CFLAGS" \
     --with-extra-ldflags="$LDFLAGS" \
+    --with-libffi-lib=$FFI_DIR \
+    --with-libffi-include=$FFI_DIR/include \
     --enable-option-checking=fatal \
     --with-jdk-variant=normal \
     --with-jvm-variants=zero \
