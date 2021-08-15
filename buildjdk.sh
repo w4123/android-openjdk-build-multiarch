@@ -52,7 +52,8 @@ fi
 
 # fix building libjawt
 ln -s -f $CUPS_DIR/cups $ANDROID_INCLUDE/
-
+export LDFLAGS+=" -L$FFI_DIR"
+export CFLAGS+=" -I$FFI_DIR/include"
 cd openjdk
 #rm -rf build
 
@@ -64,8 +65,6 @@ bash ./configure \
     --with-extra-cflags="$CFLAGS" \
     --with-extra-cxxflags="$CFLAGS" \
     --with-extra-ldflags="$LDFLAGS" \
-    --with-libffi-lib=$FFI_DIR \
-    --with-libffi-include=$FFI_DIR/include \
     --enable-option-checking=fatal \
     --with-jdk-variant=normal \
     --with-jvm-variants=zero \
