@@ -45,3 +45,11 @@ make install
 if [ -f "${namefreetype}.a" ]; then
   clang -fPIC -shared $LDFLAGS -lbz2 -Wl,-all_load ${namefreetype}.a -o ${namefreetype}.dylib
 fi
+
+echo "FFI"
+git clone https://github.com/libffi/libffi
+cd libffi
+git checkout v3.3
+xcodebuild -arch arm64
+cd build_iphoneos-arm64
+make prefix=`pwd` install
