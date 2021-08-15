@@ -52,9 +52,6 @@ cd ..
 echo "FFI"
 git clone https://github.com/libffi/libffi
 cd libffi
-git checkout v3.2.1
+git checkout v3.4.2
 xcodebuild -arch arm64
-cd build_iphoneos-arm64
-make prefix=`pwd` install
-cd ..
 cd ..
