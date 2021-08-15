@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 . setdevkitpath.sh
+brew install automake
+
 cd freetype-$BUILD_FREETYPE_VERSION
 
 echo "Building Freetype"
@@ -45,6 +47,7 @@ make install
 if [ -f "${namefreetype}.a" ]; then
   clang -fPIC -shared $LDFLAGS -lbz2 -Wl,-all_load ${namefreetype}.a -o ${namefreetype}.dylib
 fi
+cd ..
 
 echo "FFI"
 git clone https://github.com/libffi/libffi
@@ -53,3 +56,5 @@ git checkout v3.3
 xcodebuild -arch arm64
 cd build_iphoneos-arm64
 make prefix=`pwd` install
+cd ..
+cd ..
